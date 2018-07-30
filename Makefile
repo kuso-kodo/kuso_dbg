@@ -3,20 +3,21 @@ CC = gcc
 CFLAGS = -O2 -Wall -I ./include
 
 OBJDIR = obj
-OBJS = $(OBJDIR)/load_inferior.o
+OBJS = $(OBJDIR)/load_inferior.o \
+       $(OBJDIR)/main.o
 
 OUTDIR = bin
 
 default:
 	make -r all
 
-all: $(OUTDIR) $(OUTDIR)/kuso_dbg
+all: $(OBJDIR) $(OUTDIR) $(OUTDIR)/kuso_dbg
 
 $(OUTDIR)/kuso_dbg: $(OBJS)
 	$(CC) -o $@ $^
 
-$(OBJDIR)/%.o: */%.c $(OBJDIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(OBJDIR)/%.o: */%.c
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 $(OBJDIR):
 	mkdir $(OBJDIR)
