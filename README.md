@@ -1,2 +1,2 @@
 # kuso_dbg
-A minimal debugger to kill time.
+A minimal debugger as a toy project to kill time.
